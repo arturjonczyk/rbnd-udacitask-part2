@@ -9,11 +9,11 @@ class UdaciList
         type = type.downcase
         case type
         when 'todo'
-            @items.push TodoItem.new(description, options)
+            @items.push TodoItem.new(type, description, options)
         when 'event'
-            @items.push EventItem.new(description, options)
+            @items.push EventItem.new(type, description, options)
         when 'link'
-            @items.push LinkItem.new(description, options)
+            @items.push LinkItem.new(type, description, options)
         else
             raise UdaciListErrors::InvalidItemType, "The type of provided task is invalid."
         end
@@ -32,5 +32,9 @@ class UdaciList
         @items.each_with_index do |item, position|
             puts "#{position + 1}) #{item.details}"
         end
+    end
+    def filter(type)
+        results = @items.select { |task| task.type == type }
+        results.size > 0 ? results : "There aren't any items of '#{type}' type."
     end
 end
