@@ -5,11 +5,18 @@ module Listable
     end
 
     def format_priority(priority)
-        value = " ⇧" if priority == "high"
-        value = " ⇨" if priority == "medium"
-        value = " ⇩" if priority == "low"
-        value = "" if !priority
-        return value
+        case priority
+        when "high"
+            " ⇧"
+        when "medium"
+            " ⇨"
+        when "low"
+            " ⇩"
+        when nil
+            ""
+        else
+            raise UdaciListErrors::InvalidPriorityValue, "The priority of provided task is invalid."
+        end
     end
 
     def format_date(d1, d2=nil)
