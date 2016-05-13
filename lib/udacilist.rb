@@ -26,12 +26,13 @@ class UdaciList
         end
     end
     def all
-        puts "-" * @title.length
-        puts @title
-        puts "-" * @title.length
+        rows = []
         @items.each_with_index do |item, position|
-            puts "#{position + 1}) #{item.details}"
+            rows << ["#{position + 1}", item.details]
         end
+        table = Terminal::Table.new(title: @title.colorize(:magenta), rows: rows)
+        table.align_column(0, :center)
+        puts table
     end
     def filter(type)
         results = @items.select { |task| task.type == type }
