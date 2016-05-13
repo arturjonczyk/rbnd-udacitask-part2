@@ -1,4 +1,5 @@
 require 'date'
+require 'colorize'
 module Listable
     def format_description(description)
         "#{description}".ljust(30)
@@ -7,11 +8,11 @@ module Listable
     def format_priority(priority)
         case priority
         when "high"
-            " ⇧"
+            " ⇧".colorize(:red)
         when "medium"
-            " ⇨"
+            " ⇨".colorize(:yellow)
         when "low"
-            " ⇩"
+            " ⇩".colorize(:green)
         when nil
             ""
         else
