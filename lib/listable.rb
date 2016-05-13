@@ -26,4 +26,8 @@ module Listable
         dates = "N/A" if !dates
         return dates
     end
+
+    def display_type_and_description
+        "Type: #{type}, Description: #{description}"
+    end
 end
