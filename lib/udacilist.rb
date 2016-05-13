@@ -19,7 +19,7 @@ class UdaciList
         end
     end
     def delete(index)
-        if @items.size >= index
+        if good_index?(index)
             @items.delete_at(index - 1)
         else
             raise UdaciListErrors::IndexExceedsListSize, "Invalid index number exceeds the size of the list."
@@ -36,5 +36,22 @@ class UdaciList
     def filter(type)
         results = @items.select { |task| task.type == type }
         results.size > 0 ? results : "There aren't any items of '#{type}' type."
+    end
+
+    def change_priority(index, priority)
+        if good_index?(index)
+            if @items[index - 1].type == 'todo'
+                @items[index-1].change(priority)
+            else
+                raise UdaciListErrors::InvalidItemType, "The type of provided task is invalid."
+            end
+        else
+            raise UdaciListErrors::IndexExceedsListSize, "Invalid index number exceeds the size of the list."
+        end
+    end
+
+    private
+    def good_index?(index)
+        @items.size >= index
     end
 end

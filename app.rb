@@ -45,5 +45,4 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-new_list.filter("event")
-p new_list.items[0].display_type_and_description
+p new_list.filter("event")

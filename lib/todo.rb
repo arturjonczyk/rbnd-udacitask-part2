@@ -14,4 +14,8 @@ class TodoItem
         format_date(@due) +
         format_priority(@priority)
     end
+
+    def change(priority)
+        @priority = priority
+    end
 end
