@@ -1,13 +1,23 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+I used gem 'terminal-table' to print out a nicely formated ascii table.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) allow deletion of multiple items
+  b) change priority of 'todo' type of tasks
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+1 day
+
 2. What was the most rewarding challenge you conquered?
+There wasn't any challenge in this project that could get me rewarding filing.
+
 3. What two additional features did you build? Why?
+  a) allow deletion of multiple items - allow to delete multiple items is time safing.
+  b) change priority of 'todo' type of tasks - very common and usefull feature in all ToDo apps.
+
 4. Where do you still have room to grow?
+DRY, better code organizasion, and better understanding of OOD.
