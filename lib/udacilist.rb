@@ -1,6 +1,8 @@
 class UdaciList
 	attr_reader :title, :items
 
+	@@types = {todo: 'TodoItem', event: 'EventItem', link: 'LinkItem'}
+
 	def initialize(options = {})
 		@title = options[:title] || 'Untitled List'
 		@items = []
@@ -8,13 +10,8 @@ class UdaciList
 
 	def add(type, description, options = {})
 		type = type.downcase
-		case type
-		when 'todo'
-			@items.push TodoItem.new(type, description, options)
-		when 'event'
-			@items.push EventItem.new(type, description, options)
-		when 'link'
-			@items.push LinkItem.new(type, description, options)
+		if @@types.key?(type.to_sym)
+			@items.push get_type(type.to_sym).new(type, description, options)
 		else
 			raise UdaciListErrors::InvalidItemType, 'The type of provided task is invalid.'
 		end
@@ -67,5 +64,9 @@ class UdaciList
 
 	def good_index?(index)
 		@items.size >= index
+	end
+
+	def get_type(type)
+		return Object.const_get(@@types[type])
 	end
 end
