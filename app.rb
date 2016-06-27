@@ -45,4 +45,4 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-# p new_list.filter("event")
+new_list.filter("event")
